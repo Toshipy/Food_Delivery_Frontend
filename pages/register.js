@@ -11,7 +11,7 @@ const register = () => {
   const [data, setData] = useState({ username: "", email: "", password: "" });
 
   const appContext = useContext(AppContext);
-a
+
   const handleRegister = () => {
     registerUser(data.username, data.email, data.password)
     .then((res) => {
