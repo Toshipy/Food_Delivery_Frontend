@@ -1,8 +1,10 @@
-import { Button, Row, Col, Card, CardBody, CardImg, CardTitle, } from "reactstrap";
-import Link from "next/link";
+import { Button, Row, Col, Card, CardBody, CardImg, CardTitle,} from "reactstrap";
 import {gql} from "apollo-boost";
 import {useQuery} from "@apollo/react-hooks";
 import {useRouter} from "next/router";
+import Cart from "../components/Cart";
+import AppContext from "../context/AppContext";
+import { useContext } from "react";
 
 const GET_RESTAURANT_DISHES = gql`
     query ($id: ID!){
@@ -23,6 +25,7 @@ const GET_RESTAURANT_DISHES = gql`
 `;
 
 const Restaurants = (props) => {
+  const appContext = useContext(AppContext);
   const router = useRouter();
   const {loading, error, data} = useQuery(GET_RESTAURANT_DISHES, {
       variables: {id: router.query.id },
@@ -36,21 +39,21 @@ const Restaurants = (props) => {
       <>
       <h1>{restaurant.name}</h1>
       <Row>
-        {restaurant.dishes.map((res) => {
+        {restaurant.dishes.map((dish) => {
           return(
-          <Col xs="6" sm="4" key={res.id} style={{padding: 0}}>
+          <Col xs="6" sm="4" key={dish.id} style={{padding: 0}}>
           <Card style={{margin:"0 10px"}}>
             <CardImg 
-              src={`${process.env.NEXT_PUBLIC_API_URL}${res.image.url}`}
+              src={`${process.env.NEXT_PUBLIC_API_URL}${dish.image.url}`}
               top={true} 
               style={{height: 250}}
             />
             <CardBody>
-              <CardTitle>{res.name}</CardTitle>
-              <CardTitle>{res.description}</CardTitle>
+              <CardTitle>{dish.name}</CardTitle>
+              <CardTitle>{dish.description}</CardTitle>
             </CardBody>
             <div className="card-footer">
-              <Button outline color="primary">
+              <Button outline color="primary" onClick={()=> appContext.addItem(dish)}>
                 + カートに入れる
               </Button>
               </div>
@@ -76,6 +79,11 @@ const Restaurants = (props) => {
               }
               `}
             </style>
+            <Col xs="3" style={{padding:0}}>
+              <div>
+                <Cart />
+              </div>
+            </Col>
         </Row>
         </>
       );

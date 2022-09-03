@@ -19,7 +19,7 @@ const query = gql`
 
 const RestaurantList = (props) => {
   const {loading, error, data} = useQuery(query);
-  console.log(data);
+  // console.log(data);
   if(error) return "レストランの読み込み失敗しました";
   if(loading) return <h2>読み込み中・・・</h2> 
   if(data){
