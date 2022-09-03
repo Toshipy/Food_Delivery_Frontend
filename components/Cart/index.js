@@ -24,7 +24,7 @@ const Cart = () => {
               ? cart.items.map((item) => {
                 if(item.quantity > 0){
                   return (
-                    <div className="items-one" style={{marginBottom: 15}} >
+                    <div className="items-one" style={{marginBottom: 15}} key={item.id}>
                     <div>
                       <span id="item-price">&nbsp; {item.price}</span>
                       <span id="item-name">&nbsp; {item.name}</span>
@@ -55,7 +55,7 @@ const Cart = () => {
               <div>
                 <Badge style={{width: 200, padding:10}} color="light">
                   <h5 style={{fontWeight:100, color:"gray"}}>合計：</h5>
-                  <h3 style={{color: "black"}}>{cart.total}</h3>
+                  <h3 style={{color: "black"}}>{cart.total}円</h3>
                 </Badge>
                 <div>
                   <Link href="/checkout">
