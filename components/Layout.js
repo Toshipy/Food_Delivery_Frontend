@@ -16,7 +16,7 @@ const Layout = (props) => {
         <title>フードデリバリーサービス</title>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         />
       </Head>
       <header>
@@ -24,6 +24,11 @@ const Layout = (props) => {
           {`
             a{
               color: white;
+            }
+
+            h5{
+              color: white;
+              
             }
           `}
         </style>
@@ -36,7 +41,7 @@ const Layout = (props) => {
           <NavItem className="ml-auto">
             {user ? (
                 <Link href="/">
-                  <a className="nav-link" onClick={() => {
+                  <a className="nav-link"  onClick={() => {
                     setUser(null);
                   }}>
                     ログアウト
@@ -44,25 +49,25 @@ const Layout = (props) => {
                 </Link>
             ) : (
               <Link href="/login">
-              <a className="nav-link">ログイン</a>
+              <a className="nav-link" style={{margin: "auto"}}>ログイン</a>
             </Link>
             ) }
             
           </NavItem>
           <NavItem>
             {user ? (
-              <a>{user.username}でログイン中</a>
+              <h5 style={{fontSize: 15, margin:"auto"}} >{user.username}でログイン中</h5>
             ):(
             <Link href="/register" >
             <a className="nav-link">新規登録</a>
-          </Link>)}
-            
+          </Link>
+          )}
           </NavItem>
         </Nav>
       </header>
       <Container>{props.children}</Container>
     </div>
   );
-}
+};
 
 export default Layout;
