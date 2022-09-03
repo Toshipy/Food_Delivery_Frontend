@@ -1,0 +1,38 @@
+#React version
+$ npm i next@9.4.0 react@16.13.1 react-dom@16.13.1
+
+#version 確認
+$ npm list --depth=0
+├── @apollo/react-hooks@3.1.5
+├── @apollo/react-ssr@3.1.5
+├── apollo-boost@0.4.7
+├── apollo-link-http@1.5.17
+├── eslint-config-next@12.2.5
+├── eslint@8.23.0
+├── graphql@15.0.0
+├── next-apollo@3.1.10
+├── next@12.2.5
+├── react-dom@18.2.0
+├── react@18.2.0
+└── reactstrap@9.1.4
+
+#React uninstall
+$ npm uninstall react
+$ npm uninstall react-dom
+$ npm list --depth=0
+├── @apollo/react-hooks@3.1.5
+├── @apollo/react-ssr@3.1.5
+├── apollo-boost@0.4.7
+├── apollo-link-http@1.5.17
+├── eslint-config-next@12.2.5
+├── eslint@8.23.0
+├── graphql@15.0.0
+├── next-apollo@3.1.10
+├── next@12.2.5
+├── react-dom@18.2.0
+└── reactstrap@9.1.4
+
+$ npm install react@16.13.1
+$ npm install react-dom@16.13.1
+
+$ npm list react
