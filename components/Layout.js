@@ -44,14 +44,14 @@ const Layout = (props) => {
                 </Link>
             ) : (
               <Link href="/login">
-              <a id="sign-in" className="nav-link">ログイン</a>
+              <a className="nav-link">ログイン</a>
             </Link>
             ) }
             
           </NavItem>
           <NavItem>
             {user ? (
-              <h5>{user.username}</h5>
+              <a>{user.username}でログイン中</a>
             ):(
             <Link href="/register" >
             <a className="nav-link">新規登録</a>

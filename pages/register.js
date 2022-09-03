@@ -4,15 +4,21 @@ import { useState } from "react";
 import AppContext from "../context/AppContext";
 import { useContext } from "react";
 
+
 const register = () => {
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState({});
   const [data, setData] = useState({ username: "", email: "", password: "" });
+  // const {user, setUser } = useContext(AppContext);
+
+
 
   const appContext = useContext(AppContext);
-
   const handleRegister = () => {
+    // console.log(data.username);
+    // console.log(data.email);
+    // console.log(data.password);
     registerUser(data.username, data.email, data.password)
     .then((res) => {
       appContext.setUser({res});
